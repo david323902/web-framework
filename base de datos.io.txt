@@ -1,0 +1,61 @@
+import datetime
+from django.db import models
+
+class Student(models.Model):
+    status = models.BooleanField(null=True, blank=True, default=True)
+    updated_at = models.DateTimeField(default=datetime.datetime.now())
+    created_at = models.DateTimeField(default=datetime.datetime.now())
+    code = models.CharField(max_length=50)
+    deleted_at = models.DateTimeField(null=True, blank=True)
+    id_person = models.IntegerField()
+
+class Countrie(models.Model):
+    abrev = models.CharField(max_length=10)
+    deleted_at = models.DateTimeField(null=True, blank=True)
+    descrip = models.CharField(max_length=10)
+    updated_at = models.DateTimeField(default=datetime.datetime.now())
+    created_at = models.DateTimeField(default=datetime.datetime.now())
+    name = models.CharField(max_length=100)
+
+class Department(models.Model):
+    abrev = models.CharField(max_length=10)
+    updated_at = models.DateTimeField(default=datetime.datetime.now())
+    deleted_at = models.DateTimeField(null=True, blank=True)
+    descrip = models.CharField(max_length=10)
+    created_at = models.DateTimeField(default=datetime.datetime.now())
+    id_country = models.IntegerField()
+    name = models.CharField(max_length=100)
+
+class User(models.Model):
+    email = models.EmailField(null=True, blank=True, default=True)
+    updated_at = models.DateTimeField(default=datetime.datetime.now())
+    created_at = models.DateTimeField(default=datetime.datetime.now())
+    deleted_at = models.DateTimeField(null=True, blank=True)
+    status = models.BooleanField(null=True, blank=True, default=True)
+    password = models.CharField(null=True, blank=True, default=True)
+
+class Identification_types(models.Model):
+    abrev = models.CharField(max_length=10)
+    descrip = models.CharField(max_length=10)
+    updated_at = models.DateTimeField(default=datetime.datetime.now())
+    deleted_at = models.DateTimeField(null=True, blank=True)
+    created_at = models.DateTimeField(default=datetime.datetime.now())
+    name = models.CharField(max_length=100)
+
+class Person(models.Model):
+    updated_at = models.DateTimeField(default=datetime.datetime.now())
+    age = models.IntegerField()
+    lastname = models.CharField(max_length=20)
+    created_at = models.DateTimeField(default=datetime.datetime.now())
+    deleted_at = models.DateTimeField(null=True, blank=True)
+    firstname = models.CharField(max_length=20)
+    ident_number = models.CharField(max_length=12, blank=True)
+
+class Citie(models.Model):
+    descrip = models.CharField(max_length=10)
+    updated_at = models.DateTimeField(default=datetime.datetime.now())
+    deleted_at = models.DateTimeField(null=True, blank=True)
+    created_at = models.DateTimeField(default=datetime.datetime.now())
+    id_dept = models.IntegerField()
+    abrev = models.CharField(max_length=10)
+    name = models.CharField(max_length=100)
